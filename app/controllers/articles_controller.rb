@@ -6,11 +6,13 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    
+    @comment = Comment.new
   end
 
   def new
     @article = Article.new
+    @comment = Comment.new
+    @comment.article_id = @article.id
   end
 
   def create
@@ -31,11 +33,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article
+    
   end
 
   def update 
-    #@article = Article.find(params[:id])
     @article.update(article_params)
 
     flash.notice = "Article '#{@article.title}' Updated!"
